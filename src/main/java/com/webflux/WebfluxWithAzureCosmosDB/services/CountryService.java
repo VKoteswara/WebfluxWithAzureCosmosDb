@@ -1,5 +1,7 @@
 package com.webflux.WebfluxWithAzureCosmosDB.services;
 
+import com.webflux.WebfluxWithAzureCosmosDB.dtos.CountryDto;
+import com.webflux.WebfluxWithAzureCosmosDB.dtos.UserDto;
 import com.webflux.WebfluxWithAzureCosmosDB.models.Country;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,8 @@ import java.util.Optional;
 
 
 public interface CountryService {
-   Mono<Country> createCountry(Country country);
-   Optional<Mono<Country>> findByCountryName(String countryName);
-   Flux fetchAllCOuntries();
+   Mono<Country> createCountry(Country country,Integer id);
+   Flux<Country> fetchAllCountries();
+   Mono<Country> updateCountryById(CountryDto userDto, String id);
+   Mono<String> deleteCountryById(String id);
 }
