@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/createuser")
-    public ResponseEntity<Mono<User>> createUser(@Valid @RequestBody User user, @RequestParam("countryName") String countryName){
+    public ResponseEntity<Mono<User>> createUser(@Valid @RequestBody User user, @RequestParam("id") String countryName){
         Mono<User> userSaved=userService.createUser(user,countryName);
         return ResponseEntity.ok(userSaved);
     }

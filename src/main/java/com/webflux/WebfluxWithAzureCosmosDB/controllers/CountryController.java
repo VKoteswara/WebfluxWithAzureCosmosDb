@@ -31,10 +31,15 @@ public class CountryController {
 
         return ResponseEntity.ok(flux);
     }
+    @GetMapping("/fetchcountrybyid")
+    public ResponseEntity<Mono<Country>> fetchCountryById(@RequestParam("id") String id){
+        return ResponseEntity.ok(countryService.fetchCountryById(id));
+    }
     @PutMapping("/updateCountryByid")
     public ResponseEntity<Mono<Country>> updateCountryById(@RequestBody  CountryDto countryDto,@RequestParam("id") String id){
         return ResponseEntity.ok(countryService.updateCountryById(countryDto,id));
     }
+    @DeleteMapping("/deletecountrybyid")
     public ResponseEntity<Mono<String>> deletedCountryById(@RequestParam("id") String id){
         return  ResponseEntity.ok(countryService.deleteCountryById(id));
     }

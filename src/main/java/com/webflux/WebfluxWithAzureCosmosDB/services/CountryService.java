@@ -16,4 +16,5 @@ public interface CountryService {
    Flux<Country> fetchAllCountries();
    Mono<Country> updateCountryById(CountryDto userDto, String id);
    Mono<String> deleteCountryById(String id);
+   Mono<Country> fetchCountryById(String id);
 }

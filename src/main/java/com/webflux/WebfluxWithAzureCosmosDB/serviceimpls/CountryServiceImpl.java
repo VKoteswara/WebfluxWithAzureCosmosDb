@@ -62,4 +62,11 @@ public class CountryServiceImpl implements CountryService {
                 })
                 .cast(String.class);
     }
+
+    @Override
+    public Mono<Country> fetchCountryById(String id) {
+        return countryRepository.findById(id)
+                .switchIfEmpty(Mono.error(new EntityNotFoundException(id +" does not exist")))
+                .cast(Country.class);
+    }
 }

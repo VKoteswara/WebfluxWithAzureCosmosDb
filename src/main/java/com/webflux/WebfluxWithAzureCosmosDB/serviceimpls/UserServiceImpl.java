@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private CountryRepository countryRepository;
     @Override
     public Mono<User> createUser(User user,String counterName) {
-        return countryRepository.findByCountryName(counterName)
+        return countryRepository.findById(counterName)
                 .doOnError(error -> new EntityNotFoundException(counterName + " does not exist"))
                 .switchIfEmpty(Mono.error(new EntityNotFoundException(counterName + " does not exist")))
                 .map(country -> {
